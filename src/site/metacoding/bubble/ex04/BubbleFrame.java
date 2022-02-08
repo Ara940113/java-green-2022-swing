@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 public class BubbleFrame extends JFrame {
 	/**
 	 * 
-	 * @ author 메타코딩 목적: 캐릭터 좌우 이동
+	 * @ author 메타코딩 목적: 스무스한 이동
 	 */
 
 	private JLabel backgroundMap;
@@ -53,17 +53,32 @@ public class BubbleFrame extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent e) { // 키보드 누른걸 떼면
 				System.out.println("키보드 릴리즈");
+				if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+					// isRight를 false
+					player.setRight(false);
+				}else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+					 player.setLeft(false);
+
+					
+				}
+				
+				
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) { // 키보드를 누르면
 				//왼쪽 37, 오른쪽은 39, 위쪽은 38, 아래쪽은 40
-				System.out.println("키보드 프레스 :" +e.getKeyCode());
+			//	System.out.println("키보드 프레스 :" +e.getKeyCode());
 				
 				if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-					player.right();
+					// 키보드를 누르고 있는 동안 right 메서드를 한번만 실행하고 싶다. -> 누르고 있는지 누르고 있지않은지에 대한 상태변수 필요
+					if(player.isRight () == false) {
+						player.right();}
+					
+					
 				}else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-					player.left();
+					if(player.isRight () == false) {
+						player.left();}
 					
 				}
 			}
