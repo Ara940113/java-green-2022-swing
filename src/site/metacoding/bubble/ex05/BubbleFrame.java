@@ -1,4 +1,4 @@
-package site.metacoding.bubble.ex04;
+package site.metacoding.bubble.ex05;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -10,11 +10,13 @@ import javax.swing.JLabel;
 public class BubbleFrame extends JFrame {
    /**
     * 
-    * @ author 메타코딩 목적: 스무스한 이동
+    * @ author 메타코딩 목적: 점프
     */
 
    private JLabel backgroundMap;
    private Player player;
+   
+   int count = 0;
 
    public BubbleFrame() {
       initObject();
@@ -81,6 +83,12 @@ public class BubbleFrame extends JFrame {
                   player.left();
 
                }
+            } else if (e.getKeyCode() == 38) { // 이걸 막으면 이벤트 루프 등록을 안하는것 => 키프레스 메서드를 타기 때문에 안된다
+            	if(!player.isJUmp()) {
+            		System.out.println("카운트");
+            		count ++;
+            		player.Jump(); // 메서드 내부에 if 분기 처리는 이벵트 루프에 등록은 되는데 실행이 안되는 것
+            	}
             }
       
          }

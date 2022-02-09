@@ -19,6 +19,7 @@ public class BubbleFrame extends JFrame {
 		setVisible(true); // 내부에 paintComponent()호출 코드가 있다.
 	}
 
+	
 //new 하는 것
 	private void initObject() {
 		backgroundMap = new JLabel(new ImageIcon("image/backgroundMap.png"));
